@@ -50,7 +50,7 @@ public class Point {
 	
 	public boolean equals(Point otherPoint)
 	{
-		if (this.quantity == otherPoint.quantity) return true;
+		if (this.quantity == otherPoint.quantity && this.price == otherPoint.price) return true;
 		return false;
 	}
 	
