@@ -1,6 +1,6 @@
 /**
  * This is the first assignment of APCSA 2024.
- * Required for (quantity,price ordered pair definition.
+ * Required for (quantity, price) ordered pair definition.
  */
 
 /**
