@@ -28,30 +28,26 @@ public class Point {
 		return quantity;
 	}
 	
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setQuantity(int q) {
+		this.quantity = q;
 	}
 	
-	/**
-	 * Changes the price of the specific Point object
-	 */
 	public double getPrice() {
 		return price;
 	}
 	
-	public void setPrice(double price) {
-		this.price = price;
+	public void setPrice(double p) {
+		this.price = p;
 	}
 
 	@Override
 	public String toString() {
-		return "[" + quantity + "," + price + "]";
+		return "(" + quantity + ", " + price + ")";
 	}
 	
 	public boolean equals(Point otherPoint)
 	{
-		if (this.quantity == otherPoint.quantity && this.price == otherPoint.price) return true;
-		return false;
+		return (this.quantity == otherPoint.quantity && this.price == otherPoint.price);
 	}
 	
 }
