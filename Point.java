@@ -4,26 +4,25 @@
  */
 
 /**
- * @author MARedden
- * Date: 2024Aug21
- * Description:
+ * @author MARedden, Noah Buster
+ * Date: 2024 Aug 21
+ * Description: class that holds a quantity and price, and methods for equality.
  *
  */
-
 public class Point {
+	
 	private int quantity;
 	private double price;
 	
-	public Point(int quantity, double price) {
-		this.quantity = quantity;
-		this.price = price;
-	}
-	
 	public Point() {
-		this.quantity = 0;
-		this.price = 0.0;
+		quantity = 0;
+		price = 0.0;
 	}
 	
+	public Point(int q, double p) {
+		quantity = q;
+		price = p;
+	}
 	public int getQuantity() {
 		return quantity;
 	}
@@ -39,15 +38,22 @@ public class Point {
 	public void setPrice(double p) {
 		this.price = p;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "(" + quantity + ", " + price + ")";
 	}
 	
-	public boolean equals(Point otherPoint)
-	{
-		return (this.quantity == otherPoint.quantity && this.price == otherPoint.price);
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Point)) {
+			return false;
+		}
+		Point p = (Point)o;
+		return p.quantity == this.quantity && p.price == this.price;
 	}
 	
+	public boolean equals(Point p) {
+		return p.quantity == this.quantity && p.price == this.price;
+	}
 }
