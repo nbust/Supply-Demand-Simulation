@@ -13,7 +13,7 @@ public class Point {
 	
 	private int quantity;
 	private double price;
-	public static final double tolerance;
+	public static final double tolerance = 0.01;
 	
 	public Point() {
 		quantity = 0;
