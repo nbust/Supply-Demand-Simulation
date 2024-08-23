@@ -8,8 +8,7 @@
  * Date: 2024 Aug 21
  * Description: class that holds a quantity and price, and methods for equality.
  *
- */
-public class Point {
+ */public class Point {
 	
 	private int quantity;
 	private double price;
@@ -50,10 +49,12 @@ public class Point {
 			return false;
 		}
 		Point p = (Point)o;
-		return p.quantity == this.quantity && p.price == this.price;
+		double d = p.price - this.price;
+		return p.quantity == this.quantity && Math.abs(d) < .001;
 	}
 	
 	public boolean equals(Point p) {
-		return p.quantity == this.quantity && p.price == this.price;
+		double d = p.price - this.price;
+		return p.quantity == this.quantity && Math.abs(d) < .001;
 	}
 }
