@@ -16,12 +16,12 @@ public class Point {
 	
 	public Point() {
 		quantity = 0;
-		price = 0.0;
+		price    = 0.0;
 	}
 	
 	public Point(int q, double p) {
 		quantity = q;
-		price = p;
+		price    = p;
 	}
 	public int getQuantity() {
 		return quantity;
