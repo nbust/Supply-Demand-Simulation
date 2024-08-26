@@ -3,19 +3,33 @@ public class TestPoint {
 
 	public static void main(String[] args) {
 		Point p1 = new Point();
-		System.out.println(p1.toString());
-				
-		Point p2 = new Point(1,1.0);
-		System.out.println(p2);
+		Point p2 = new Point(0, 0.0);
+		System.out.println("p1 is " + p1.toString()); //(0, 0.0)
+		System.out.println("p2 is " + p2.toString()); //(0, 0.0)
+		System.out.println("p1 equals p2 " + p1.equals(p2)); //true
+		System.out.println("p2 equals p1 " + p2.equals(p1)); //true
 		
-		p1.setQuantity(1);
-		p1.setPrice(1.0);
-		System.out.println("p1 is "+p1.toString());
+		Point p3 = new Point(1, 3.0);
+		Point p4 = new Point();
+		p4.setQuantity(1);
+		p4.setPrice(3.0);
+		System.out.println("p3 is " + p3.toString()); //(1, 3.0)
+		System.out.println("p4 is " + p4.toString()); //(1, 3.0)
+		System.out.println("p3 equals p4 " + p3.equals(p4)); //true
+		System.out.println("p4 equals p3 " + p4.equals(p3)); //false
 		
-		System.out.println("p1 quantity is "+p1.getQuantity());
-		System.out.println("p1 price is "+p1.getPrice());
-		
-		System.out.println(p1.equals(p2));
+		Integer b = 5;
+		System.out.println("p4 equals 5 " + p4.equals(b)); //false
+
+		Point p5 = new Point(3, 0.0);
+		Point p6 = new Point(0, 0.0);
+		Point p7 = new Point(0, 3.0);
+		System.out.println("p5 is " + p5.toString()); //(3, 0.0)
+		System.out.println("p6 is " + p6.toString()); //(0, 0.0)
+		System.out.println("p7 is " + p7.toString()); //(0, 3.0)
+		System.out.println("p5 equals p6 " + p5.equals(p6)); //false
+		System.out.println("p6 equals p7 " + p6.equals(p7)); //false
+		System.out.println("p5 equals p7 " + p5.equals(p7)); //false
 	}
 
 }
