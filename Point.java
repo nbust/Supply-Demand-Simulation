@@ -4,10 +4,9 @@
  */
 
 /**
- * @author MARedden, Noah Buster
+ * @author MARedden, Noah Buster, Abram Deweese
  * Date: 2024 Aug 21
  * Description: class that holds a quantity and price, and methods for equality.
- *
  */
 public class Point {
 	
