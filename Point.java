@@ -12,7 +12,7 @@ public class Point {
 	
 	private int quantity;
 	private double price;
-	public static final double Tolerance = 0.01;
+	public static final double TOLERANCE = 0.01;
 	
 	public Point() {
 		quantity = 0;
@@ -51,11 +51,11 @@ public class Point {
 		}
 		Point p = (Point)o;
 		double d = p.price - this.price;
-		return p.quantity == this.quantity && Math.abs(d) < Tolerance;
+		return p.quantity == this.quantity && Math.abs(d) < TOLERANCE;
 	}
 	
 	public boolean equals(Point p) {
 		double d = p.price - this.price;
-		return p.quantity == this.quantity && Math.abs(d) < Tolerance;
+		return p.quantity == this.quantity && Math.abs(d) < TOLERANCE;
 	}
 }
