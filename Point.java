@@ -59,16 +59,15 @@ public class Point {
 		}
 		Point p = (Point)o;
 		double d = p.price - this.price;
-		return p.quantity == this.quantity && Math.abs(d) < TOLERANCE;
+		return (p.quantity == this.quantity) && (Math.abs(d) < TOLERANCE);
 	}
 
 	/** 
 	 * uses overload
 	 */
-	// @Overload
-	// need to chose order in line 72
+	// Overload
 	public boolean equals(Point p) {
 		double d = p.price - this.price;
-		return p.quantity == this.quantity && Math.abs(d) < TOLERANCE;
+		return (p.quantity == this.quantity) && (Math.abs(d) < TOLERANCE);
 	}
 }
