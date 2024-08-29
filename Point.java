@@ -51,7 +51,7 @@ public class Point {
 	}
 
 	/** 
-	 * returns string with ordered pair of quantity and price
+	 * returns string with ordered pair of quantity, price
 	 */
 	@Override
 	public String toString() {
