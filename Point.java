@@ -8,15 +8,14 @@
  * Date: 2024 Aug 21
  * Description: class that holds a quantity and price, and methods for equality.
  */
-// use overload correctly
 public class Point {
 
-	private int 				quantity;
-	private double 				price;
-	public static final double 	TOLERANCE = 0.01;
+	private int                quantity;
+	private double             price;
+	public static final double TOLERANCE = 0.01;
 
 	/** 
-	 * Method which declares quantity and price
+	 * constructor declares quantity and price
 	 */
 	public Point() {
 		quantity = 0;
@@ -24,34 +23,44 @@ public class Point {
 	}
 
 	/** 
-	 * Method which confirms q and p are greater than 0
+	 * constructor declares quantity and price with safety checks
 	 */
 	public Point(int q, double p) {
 		quantity = q;
 		price = p;
-		if(q<=0)
-		{
+		if (q < 0) {
 			q = 0;
 		}
-		if(p<=0.0)
-		{
+		if (p < 0.0) {
 			p = 0.0;
 		}
 	}
 	
+	/** 
+	 * returns quantity
+	 */
 	public int getQuantity() {
 		return quantity;
 	}
 
+	/** 
+	 * returns price
+	 */
 	public double getPrice() {
 		return price;
 	}
 
+	/** 
+	 * returns string with ordered pair of quantity and price
+	 */
 	@Override
 	public String toString() {
 		return "(" + quantity + ", " + price + ")";
 	}
 
+	/** 
+	 * checks equality with object o
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof Point)) {
@@ -63,7 +72,7 @@ public class Point {
 	}
 
 	/** 
-	 * uses overload
+	 * checks equality with point p
 	 */
 	// Overload
 	public boolean equals(Point p) {
