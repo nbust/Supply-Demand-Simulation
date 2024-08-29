@@ -12,7 +12,6 @@ public class TestPoint {
 	/** 
 	 * main method that tests point.java
 	 */
-	// deleted set methods so need to change this
 	public static void main(String[] args) {
 		Point p1 = new Point();
 		Point p2 = new Point(0, 0.0);
@@ -20,16 +19,14 @@ public class TestPoint {
 		System.out.println("p2 is " + p2.toString()); //(0, 0.0)
 		System.out.println("p1 equals p2 " + p1.equals(p2)); //true
 		System.out.println("p2 equals p1 " + p2.equals(p1)); //true
-
+		
 		Point p3 = new Point(1, 3.0);
 		Point p4 = new Point();
-		p4.setQuantity(1);
-		p4.setPrice(3.0);
 		System.out.println("p3 is " + p3.toString()); //(1, 3.0)
-		System.out.println("p4 is " + p4.toString()); //(1, 3.0)
-		System.out.println("p3 equals p4 " + p3.equals(p4)); //true
+		System.out.println("p4 is " + p4.toString()); //(0, 0.0)
+		System.out.println("p3 equals p4 " + p3.equals(p4)); //false
 		System.out.println("p4 equals p3 " + p4.equals(p3)); //false
-
+		
 		Integer b = 5;
 		System.out.println("p4 equals 5 " + p4.equals(b)); //false
 
@@ -43,5 +40,4 @@ public class TestPoint {
 		System.out.println("p6 equals p7 " + p6.equals(p7)); //false
 		System.out.println("p5 equals p7 " + p5.equals(p7)); //false
 	}
-
 }
