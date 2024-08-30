@@ -67,8 +67,7 @@ public class Point {
 			return false;
 		}
 		Point p = (Point)o;
-		double d = p.price - this.price;
-		return (p.quantity == this.quantity) && (Math.abs(d) < TOLERANCE);
+		return this.equals(p);
 	}
 
 	/** 
