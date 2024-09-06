@@ -1,0 +1,92 @@
+/**
+ * @author Noah Buster, Justin Dial, Olivia Sayuk
+ * Date: 2024 Sep 6
+ * Description: ProducerCurve has array of Points
+ * as well as methods to manage and manipulate Point array.
+ */
+public class ProducerCurve {
+	
+	private Point[] pCurve;
+	
+	public ProducerCurve(int n) {
+		if (n >= 0)
+		{
+			pCurve = new Point[n];
+		}
+		else
+		{
+			pCurve = new Point[0];
+		}
+	}
+	
+	public ProducerCurve(int n, double slope, int startQuantity, double startPrice) {
+		this(n);
+		
+		// might have to do safety checks, but Point and constructor already do so?
+		// might also have to check that slope is negative / positive
+		
+		// fill array with n amount of points with linear function.
+		for (int i = 0; i < pCurve.length; i++) {
+			pCurve[i] = new Point(startQuantity + i, startPrice + (i/slope));
+		}
+	}
+	
+	public String toString() {
+		// print out array --- olivia
+	}
+	
+	boolean add(Point p) {
+		
+		// declare & instantiate new point array one larger than current pCurve
+		// fill new array, except for last element, with points from pCurve
+		Point[] result = new Point[pCurve.length + 1];
+		for (int i = 0; i < pCurve.length; i++) {
+			result[i] = pCurve[i];
+		}
+		
+		// fill last element with point p, return true
+		result[result.length - 1] = p;
+		return true;
+	}
+	
+	boolean remove(Point p) {
+		int index = searchIndex(p);
+		if (index == -1) {
+			return false;
+		}
+		
+		// declare & instantiate new point array one smaller pCurve
+		// fill new array with points from pCurve, except for element at index
+		Point[] result = new Point[pCurve.length - 1];
+		for (int i = 0; i < pCurve.length; i++) {
+			// if before removed point, add elements as is
+			if (i < index) {
+				result[i] = pCurve[i];
+			}
+			
+			// if after removed point, add elements with offset 
+			// to shift rest of list back by one
+			else if (i > index) {
+				result[i-1] = pCurve[i];
+			}
+		}
+		
+		// set pCurve to result, return true
+		pCurve = result;
+		return true;
+	}
+	
+	boolean isOnCurve(Point p) {
+		// scan through array and check point.equals == true -- justin
+	}
+	
+	private int searchIndex(Point p) {
+		int index = -1;
+		for (int i = 0; i < pCurve.length; i++) {
+			if (pCurve[i].equals(p)) {
+				index = i;
+			}
+		}
+		return index;
+	}
+}
