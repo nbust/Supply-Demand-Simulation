@@ -1,11 +1,6 @@
-/**
- * @author Noah Buster, Justin Dial, Olivia Sayuk
- * Date: 2024 Sep 6
- * Description: ProducerCurve has array of Points
- * as well as methods to manage and manipulate Point array.
- */
-public class ProducerCurve {
-	
+package firstPackage;
+
+public class producerCurve {
 	private Point[] pCurve;
 	
 	public ProducerCurve(int n) {
@@ -31,26 +26,36 @@ public class ProducerCurve {
 		}
 	}
 	
+	/**
+	 * prints out the toString of each point within the pCurve array
+	 */
 	public String toString() 
 	{
 		// prints out the Point objects in the array
 		StringBuilder sb = new StringBuilder("ProducerCurve: [");
-    		for (int i = 0; i < pCurve.length; i++) 
+    	for (int i = 0; i < pCurve.length; i++) 
 		{
-        		if (pCurve[i] != null) 
+        	if (pCurve[i] != null) 
 			{
-            			sb.append(pCurve[i].toString());
-        		}
-        		if (i < pCurve.length - 1) 
+            	sb.append(pCurve[i].toString());
+        	}
+        	if (i < pCurve.length - 1) 
 			{
-            			sb.append(", ");
-        		}
-    		}
-    		sb.append("]");
+            		sb.append(", ");
+        	}
+    	}
+    	sb.append("]");
    		return sb.toString();
 	}
-	
+
+	/**
+	 * adds point p to the array pCurve
+	 * returns true if point was added, returns false if point already exists
+	 */
 	boolean add(Point p) {
+		
+		// checks if point is already added
+		if (searchIndex(p) >= 0) return false;
 		
 		// declare & instantiate new point array one larger than current pCurve
 		// fill new array, except for last element, with points from pCurve
@@ -64,6 +69,10 @@ public class ProducerCurve {
 		return true;
 	}
 	
+	/**
+	 * Removes point p from the array pCurve if it does exist
+	 * if point p does exist, returns true, if it doesn't, returns false
+	 */
 	boolean remove(Point p) {
 		int index = searchIndex(p);
 		if (index == -1) {
@@ -91,8 +100,15 @@ public class ProducerCurve {
 		return true;
 	}
 	
-	boolean isOnCurve(Point p) {
-		// scan through array and check point.equals == true -- justin
+	/**
+	 * Checks to see if point p is within the array of pCurve
+	 * if so, returns true, if not, returns false
+	 */
+	boolean isOnCurve (Point p) {
+		for int i=0; i < pCurve.length; i++){
+			if(p.equals(pCurve[i])) return true;
+		return false;
+		}
 	}
 	
 	private int searchIndex(Point p) {
