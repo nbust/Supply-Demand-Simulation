@@ -8,41 +8,45 @@ public class ProducerCurve {
 	
 	private Point[] pCurve;
 	
-	public ProducerCurve(int n) {
-		if (n >= 0)
-		{
-			pCurve = new Point[n];
+	/**
+	 * constructor method instantiates pCurve array with number of points
+	 * @param n
+	 */
+	private ProducerCurve(int n) {
+		if (n < 0) {
+			n = 0;
 		}
-		else
-		{
-			pCurve = new Point[0];
-		}
+		pCurve = new Point[n];
 	}
 	
+	/**
+	 * constructor instantiates pCurve array with number of linear points
+	 * @param n
+	 * @param slope
+	 * @param startQuantity
+	 * @param startPrice
+	 */
 	public ProducerCurve(int n, double slope, int startQuantity, double startPrice) {
 		this(n);
 		
-		// might have to do safety checks, but Point and constructor already do so?
-		// might also have to check that slope is negative / positive
-		
 		// fill array with n amount of points with linear function.
 		for (int i = 0; i < pCurve.length; i++) {
-			pCurve[i] = new Point(startQuantity + i, startPrice + (i/slope));
+			pCurve[i] = new Point(startQuantity + i, startPrice + (i*slope));
 		}
 	}
 	
-	public String toString() 
-	{
-		// prints out the Point objects in the array
+	/**
+	 * @return formatted list of points as string
+	 */
+	public String toString() {
+
+		// returns the Point objects in the array as formatted string
 		StringBuilder sb = new StringBuilder("ProducerCurve: [");
-    		for (int i = 0; i < pCurve.length; i++) 
-		{
-        		if (pCurve[i] != null) 
-			{
+    		for (int i = 0; i < pCurve.length; i++) {
+        		if (pCurve[i] != null) {
             			sb.append(pCurve[i].toString());
         		}
-        		if (i < pCurve.length - 1) 
-			{
+        		if (i < pCurve.length - 1) {
             			sb.append(", ");
         		}
     		}
@@ -50,6 +54,11 @@ public class ProducerCurve {
    		return sb.toString();
 	}
 	
+	/**
+	 * adds point p to end of pCurve array
+	 * @param p
+	 * @return whether operation succeeded
+	 */
 	boolean add(Point p) {
 		
 		// declare & instantiate new point array one larger than current pCurve
@@ -64,6 +73,11 @@ public class ProducerCurve {
 		return true;
 	}
 	
+	/**
+	 * removes point p from pCurve array
+	 * @param p
+	 * @return whether operation succeeded
+	 */
 	boolean remove(Point p) {
 		int index = searchIndex(p);
 		if (index == -1) {
@@ -74,6 +88,7 @@ public class ProducerCurve {
 		// fill new array with points from pCurve, except for element at index
 		Point[] result = new Point[pCurve.length - 1];
 		for (int i = 0; i < pCurve.length; i++) {
+
 			// if before removed point, add elements as is
 			if (i < index) {
 				result[i] = pCurve[i];
@@ -91,10 +106,25 @@ public class ProducerCurve {
 		return true;
 	}
 	
+	/**
+	 * finds if point is in pCurve array
+	 * @param p
+	 * @return whether given point is on curve
+	 */
 	boolean isOnCurve(Point p) {
-		// scan through array and check point.equals == true -- justin
+		for (int i = 0; i < pCurve.length; i++) {
+			if (pCurve[i].equals(p)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
+	/**
+	 * searches list for a given point
+	 * @param p
+	 * @return index of point p in pCurve array
+	 */
 	private int searchIndex(Point p) {
 		int index = -1;
 		for (int i = 0; i < pCurve.length; i++) {
