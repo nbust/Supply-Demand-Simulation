@@ -70,6 +70,7 @@ public class ProducerCurve {
 		
 		// fill last element with point p, return true
 		result[result.length - 1] = p;
+		pCurve = result;
 		return true;
 	}
 	
