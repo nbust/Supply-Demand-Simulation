@@ -1,0 +1,8 @@
+	private int searchQuantity(Point p) {
+		int index = -1;
+		for (int i = 0; i < pCurve.length; i++) {
+			if (pCurve[i].getQuantity() == p.getQuantity())
+				index = i;
+		}
+		return index;
+	}
