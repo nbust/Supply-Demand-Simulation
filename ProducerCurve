@@ -1,0 +1,60 @@
+?**
+* PLEASE ADD ALL OF THE COMMENTS AND THE TO STRING
+*/
+
+
+
+package firstPackage;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class ConsumerCurve {
+	private ArrayList<Point> cCurve;
+	
+	public ConsumerCurve() {
+		
+		int	   x = -1;
+		double y = -1.0;
+		
+		for (int i = 0; i <= cCurve.size(); i++) {
+			cCurve.add(new Point(x++, y++));
+		}
+	}
+	
+	public ConsumerCurve(int cSize, double slope, double b, int dx) {
+		
+	}
+	
+	public boolean add(Point p) {
+		
+		if (p.getPrice() > 0 && p.getQuantity() > 0) {
+			for (int i = 0; i < cCurve.size();) {
+				if (cCurve.get(i).getPrice() < p.getPrice()) {
+					i++;
+				}
+				else {
+					cCurve.add(i, p);
+				}
+			}
+			return true;
+		}
+		else return false;
+	}
+	
+	
+	public boolean remove(Point p) {
+		for (int i = cCurve.size(); i > -1; i--) {
+			if (cCurve.get(i).equals(p) == true) cCurve.remove(i);
+		}
+		return true;
+	}
+	
+	public int isOnCurve(Point p) {
+		if (cCurve.indexOf(p) > 0) return 1; else return 0;
+	}
+	
+	public String toString() {
+		
+	}
+}
