@@ -1,29 +1,39 @@
-?**
-* PLEASE ADD ALL OF THE COMMENTS AND THE TO STRING
-*/
-
-
-
 package firstPackage;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-
+/**
+ * @author Noah Buster, Justin Dial, Olivia Sayuk
+ * Date: 2024 Sep 16
+ * Description: ConsumerCurve has an arraylist of Points
+ * as well as methods to manage and manipulate Point arraylist.
+ */
 public class ConsumerCurve {
 	private ArrayList<Point> cCurve;
 	
+	/**
+	 * constructor method instantiates cCurve of size ten with ascending points
+	 */
 	public ConsumerCurve() {
+		
+		cCurve = new ArrayList<Point>(10);
 		
 		int	   x = -1;
 		double y = -1.0;
 		
-		for (int i = 0; i <= cCurve.size(); i++) {
-			cCurve.add(new Point(x++, y++));
+		for (int i = 0; i < cCurve.size(); i++) {
+			cCurve.set(i, new Point(x++, y++));
 		}
 	}
 	
-	public ConsumerCurve(int cSize, double slope, double b, int dx) {
+	public ConsumerCurve(int n, Point startPoint, int dx, double dy) {
 		
+		cCurve = new ArrayList<Point>(n);
+		
+		int startQuantity = startPoint.getQuantity();
+		double startPrice = startPoint.getPrice();
+		for (int i = 0; i < n; i++) {
+			cCurve.add(i++, new Point(startQuantity + (i*dx), startPrice + (i*dy)));
+		}
 	}
 	
 	public boolean add(Point p) {
@@ -56,5 +66,16 @@ public class ConsumerCurve {
 	
 	public String toString() {
 		
+		String result = "[";
+		for (int i = 0; i < cCurve.size(); i++) {
+			if (cCurve.get(i) != null) {
+				result += cCurve.get(i).toString();
+			}
+			if (i < cCurve.size() - 1) {
+				result += ", ";
+			}
+		}
+		result += "]";
+		return result;	
 	}
 }
