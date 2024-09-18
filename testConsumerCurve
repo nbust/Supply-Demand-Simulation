@@ -1,0 +1,19 @@
+package firstPackage;
+
+public class TestConsumerCurve {
+	public static void main(String[] args) {
+		ConsumerCurve firstCurve = new ConsumerCurve();
+		Point forSecondCurve = new Point (10, 1.3);
+		ConsumerCurve secondCurve = new ConsumerCurve(12, forSecondCurve, 4, 6.09);
+		
+		if (secondCurve.isOnCurve(forSecondCurve) == 1) {
+			System.out.println("on curve");
+		}
+		else
+			System.out.println("not on curve");
+		
+		System.out.println(secondCurve.toString());
+		System.out.println(forSecondCurve.toString());
+		return;
+	}
+}
