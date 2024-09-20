@@ -3,74 +3,100 @@ package firstPackage;
 import java.util.ArrayList;
 /**
  * @author Noah Buster, Justin Dial, Olivia Sayuk
- * Date: 2024 Sep 16
+ * Date: 2024 Sep 20
  * Description: ConsumerCurve has an arraylist of Points
  * as well as methods to manage and manipulate Point arraylist.
  */
 public class ConsumerCurve {
-	private ArrayList<Point> cCurve;
+	
+	private ArrayList<Point> cCurve = new ArrayList<Point>();
 	
 	/**
 	 * constructor method instantiates cCurve of size ten with ascending points
 	 */
 	public ConsumerCurve() {
 		
-		cCurve = new ArrayList<Point>(10);
+		int	   x = 1;
+		double y = 1.0;
 		
-		int	   x = -1;
-		double y = -1.0;
-		
-		for (int i = 0; i < cCurve.size(); i++) {
-			cCurve.set(i, new Point(x++, y++));
+		for (int i = 10; i > 0; i--) {
+			cCurve.add(new Point(x++, y++));
 		}
 	}
 	
+	/**
+	 * constructor that creates an ArrayList with specified size, start point, x slope, and y slope
+	 * @param n
+	 * @param startPoint
+	 * @param dx
+	 * @param dy
+	 */
 	public ConsumerCurve(int n, Point startPoint, int dx, double dy) {
-		
-		cCurve = new ArrayList<Point>(n);
 		
 		int startQuantity = startPoint.getQuantity();
 		double startPrice = startPoint.getPrice();
+		
 		for (int i = 0; i < n; i++) {
-			cCurve.add(i++, new Point(startQuantity + (i*dx), startPrice + (i*dy)));
+			cCurve.add(new Point(startQuantity + (i*dx), startPrice + (i*dy)));
 		}
 	}
 	
+	/**
+	 * Adds specified point to the ArrayList at the closest price,
+	 * if point exists at the price, update that point instead
+	 * @param p
+	 * @return whether operation was successful
+	 */
 	public boolean add(Point p) {
 		
 		if (p.getPrice() > 0 && p.getQuantity() > 0) {
 			for (int i = 0; i < cCurve.size();) {
-				if (cCurve.get(i).getPrice() < p.getPrice()) {
+				if (cCurve.get(i).getQuantity() == p.getQuantity()) {
+					cCurve.set(i, p);
+					return true;
+				}	
+				else if (cCurve.get(i).getQuantity() < p.getQuantity())
 					i++;
-				}
 				else {
 					cCurve.add(i, p);
+					return true;
 				}
 			}
-			return true;
+			return false;
 		}
 		else return false;
 	}
 	
-	
+	/**
+	 * Removes specified point from the ArrayList
+	 * @param p
+	 * @return whether operation was successful
+	 */
 	public boolean remove(Point p) {
-		for (int i = cCurve.size(); i > -1; i--) {
-			if (cCurve.get(i).equals(p) == true) cCurve.remove(i);
-		}
+		int index = cCurve.indexOf(p);
+		if (index == -1) return false;
+		cCurve.remove(index);
 		return true;
 	}
 	
-	public int isOnCurve(Point p) {
-		if (cCurve.indexOf(p) > 0) return 1; else return 0;
+	/**
+	 * Checks if the specified point is on the Curve
+	 * @returns 1 if true, 0 if false
+	 * @param p 
+	 */
+	public boolean isOnCurve(Point p) {
+		return (cCurve.indexOf(p) >= 0);
 	}
 	
+	/**
+	 * Returns a string of each element within the ArrayList cCurve
+	 * @return result
+	 */
 	public String toString() {
 		
 		String result = "[";
 		for (int i = 0; i < cCurve.size(); i++) {
-			if (cCurve.get(i) != null) {
 				result += cCurve.get(i).toString();
-			}
 			if (i < cCurve.size() - 1) {
 				result += ", ";
 			}
