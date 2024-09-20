@@ -12,14 +12,21 @@ public class ConsumerCurve {
 	private ArrayList<Point> cCurve = new ArrayList<Point>();
 	
 	/**
-	 * constructor method instantiates cCurve of size ten with ascending points
+	 * default constructor instantiates cCurve of size ten
 	 */
 	public ConsumerCurve() {
+		this(10);
+	}
+	
+	/**
+	 * constructor method instantiates cCurve of size n with ascending points
+	 */
+	public ConsumerCurve(int n) {
 		
 		int	   x = 1;
 		double y = 1.0;
 		
-		for (int i = 10; i > 0; i--) {
+		for (int i = n; i > 0; i--) {
 			cCurve.add(new Point(x++, y++));
 		}
 	}
