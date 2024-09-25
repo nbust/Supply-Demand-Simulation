@@ -4,7 +4,7 @@ package phase2;
  * @author Noah Buster, Justin Dial, Olivia Sayuk
  * Date: 2024 Sep 24
  * Description: ConsumerCurve extends abstract curve
- * for producer class
+ * for consumer class
  */
 public class ConsumerCurve extends AbstractCurve {
 	
